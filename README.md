@@ -1,5 +1,5 @@
 # dotfiles
-nvim + macOS dot files
+nvim + macOS (yabai, skhd, sketchybar) dot files
 
 ----------------------
 
