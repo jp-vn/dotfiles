@@ -2,20 +2,20 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
+    "saghen/blink.cmp",
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/neodev.nvim", opts = {} },
     "williamboman/mason.nvim",
   },
+
   config = function()
-    -- import lspconfig plugin
     local lspconfig = require "lspconfig"
 
     -- import mason_lspconfig plugin
     local mason_lspconfig = require "mason-lspconfig"
 
     -- import cmp-nvim-lsp plugin
-    local cmp_nvim_lsp = require "cmp_nvim_lsp"
+    -- local cmp_nvim_lsp = require "cmp_nvim_lsp"
 
     local keymap = vim.keymap -- for conciseness
 
@@ -67,10 +67,28 @@ return {
         keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
       end,
     })
+    vim.g["diagnostics_active"] = true
+    function Toggle_diagnostics()
+      if vim.g.diagnostics_active then
+        vim.g.diagnostics_active = false
+        vim.diagnostic.enable(false)
+      else
+        vim.g.diagnostics_active = true
+        vim.diagnostic.enable(true)
+      end
+    end
+    vim.keymap.set(
+      "n",
+      "<leader>xh",
+      Toggle_diagnostics,
+      { noremap = true, silent = false, desc = "Toggle vim diagnostics" }
+    )
 
     -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities = cmp_nvim_lsp.default_capabilities()
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
+    -- local capabilities = cmp_nvim_lsp.default_capabilities()
 
+    lspconfig["lua_ls"].setup { capabilities = capabilities }
     -- Change the Diagnostic symbols in the sign column (gutter)
     -- (not in youtube nvim video)
     local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
