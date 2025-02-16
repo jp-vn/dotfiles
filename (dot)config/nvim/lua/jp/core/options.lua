@@ -1,4 +1,4 @@
-vim.cmd("let g:netrw_liststyle = 3")
+vim.cmd "let g:netrw_liststyle = 3"
 
 local opt = vim.opt
 
@@ -28,7 +28,7 @@ opt.signcolumn = "yes"
 opt.backspace = "indent,eol,start" -- alow backspace on indent, end of line or insert mode start positions
 
 -- clipboard
-opt.clipboard:append("unnamedplus") -- use system clipboard
+opt.clipboard:append "unnamedplus" -- use system clipboard
 
 -- split windows
 opt.splitright = true -- split vertical window to the right
