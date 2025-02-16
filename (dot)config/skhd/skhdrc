@@ -14,6 +14,7 @@ alt - 6 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ];
 alt - 7 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m space --focus 7; else yabai -m space --focus 7; fi
 alt - 8 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m space --focus 8; else yabai -m space --focus 8; fi
 alt - 9 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m space --focus 9; else yabai -m space --focus 9; fi
+alt - 0 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m space --focus 10; else yabai -m space --focus 10; fi
 
 
 
@@ -32,15 +33,17 @@ shift + alt - l : yabai -m window --warp east || $(yabai -m window --display eas
 
 
 # Moving windows between spaces: shift + alt - {1, 2, 3, 4, p, n } (Assumes 4 Spaces Max per Display)
-shift + alt - 1 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 1; else yabai -m window --space 1; fi
-shift + alt - 2 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 2; else yabai -m window --space 2; fi
-shift + alt - 3 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 3; else yabai -m window --space 3; fi
-shift + alt - 4 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 4; else yabai -m window --space 4; fi
-shift + alt - 5 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 5; else yabai -m window --space 5; fi
-shift + alt - 6 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 6; else yabai -m window --space 6; fi
-shift + alt - 7 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 7; else yabai -m window --space 7; fi
-shift + alt - 8 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 8; else yabai -m window --space 8; fi
-shift + alt - 9 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 9; else yabai -m window --space 9; fi
+shift + alt - 1 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 1 && sketchybar --trigger windows_on_spaces; else yabai -m window --space 1; fi
+shift + alt - 2 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 2 && sketchybar --trigger windows_on_spaces; else yabai -m window --space 2; fi
+shift + alt - 3 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 3 && sketchybar --trigger windows_on_spaces; else yabai -m window --space 3; fi
+shift + alt - 4 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 4 && sketchybar --trigger windows_on_spaces; else yabai -m window --space 4; fi
+shift + alt - 5 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 5 && sketchybar --trigger windows_on_spaces; else yabai -m window --space 5; fi
+shift + alt - 6 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 6 && sketchybar --trigger windows_on_spaces; else yabai -m window --space 6; fi
+shift + alt - 7 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 7 && sketchybar --trigger windows_on_spaces; else yabai -m window --space 7; fi
+shift + alt - 8 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 8 && sketchybar --trigger windows_on_spaces; else yabai -m window --space 8; fi
+shift + alt - 9 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 9 && sketchybar --trigger windows_on_spaces; else yabai -m window --space 9; fi
+shift + alt - 0 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 10 && sketchybar --trigger windows_on_spaces; else yabai -m window --space 10; fi
+
 shift + alt - p : yabai -m window --space prev; yabai -m space --focus prev
 shift + alt - n : yabai -m window --space next; yabai -m space --focus next
 
@@ -58,11 +61,15 @@ shift + ctrl - p : yabai -m window --focus stack.prev
 # alt + shift - return : launch floating terminal
 alt - o : sketchybar -m --bar hidden=toggle; yabai -m config external_bar all:49:0 
 shift + alt - o : sketchybar -m --bar hidden=toggle; yabai -m config external_bar all:10:0 
+alt - m : sketchybar -m --bar corner_radius=15; sketchybar -m --bar y_offset=3; sketchybar -m --bar margin=8; sketchybar -m --bar padding_right=10; sketchybar -m --bar padding_left=10; yabai -m config external_bar all:49:0
+shift + alt - m : sketchybar -m --bar corner_radius=0; sketchybar -m --bar y_offset=0; sketchybar -m --bar margin=0; sketchybar -m --bar padding_right=18; sketchybar -m --bar padding_left=18; yabai -m config external_bar all:46:0 
+
 cmd - return : /Applications/iTerm.app/Contents/MacOS/iTerm2 --single-instance -d ~
 
 # float / unfloat window and center on screen
+# 1: Larger taller, upper border; 2: larger narrower, right border; 3: distance to left border, 4: distance to top border, 5
 cmd + shift - f : yabai -m window --toggle float;\
-          yabai -m window --grid 4:4:1:1:2:2
+          yabai -m window --grid 10:10:1:1:8:8; sketchybar --trigger window_focus
 
 
 ## Resize (ctrl + alt - ...)
@@ -77,3 +84,4 @@ ctrl + alt - e : yabai -m space --balance
 
 cmd + shift - return : open -n -a "Firefox"
 cmd + alt - return : open -a /Applications/iwallpaper.app 
+alt - r : brew services restart borders
