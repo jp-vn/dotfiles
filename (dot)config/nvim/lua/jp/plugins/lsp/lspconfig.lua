@@ -1,11 +1,12 @@
 return {
   "neovim/nvim-lspconfig",
-  event = { "BufReadPre", "BufNewFile" },
+  event = "VeryLazy", -- { "BufReadPre", "BufNewFile" },
   dependencies = {
     "saghen/blink.cmp",
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/neodev.nvim", opts = {} },
     "williamboman/mason.nvim",
+    "whoissethdaniel/mason-tool-installer.nvim",
   },
 
   config = function()
@@ -18,6 +19,8 @@ return {
     -- local cmp_nvim_lsp = require "cmp_nvim_lsp"
 
     local keymap = vim.keymap -- for conciseness
+
+    vim.api.nvim_command "MasonToolsInstall"
 
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -86,6 +89,7 @@ return {
 
     -- used to enable autocompletion (assign to every lsp server config)
     local capabilities = require("blink.cmp").get_lsp_capabilities()
+    local lsp_attach = function(client, bufnr) end
     -- local capabilities = cmp_nvim_lsp.default_capabilities()
 
     lspconfig["lua_ls"].setup { capabilities = capabilities }
@@ -99,13 +103,14 @@ return {
 
     mason_lspconfig.setup_handlers {
       -- default handler for installed servers
-      function(server_name)
-        if server_name ~= "jdtls" then
-          lspconfig[server_name].setup {
-            capabilities = capabilities,
-          }
-        end
-      end,
+      -- function(server_name)
+      -- if server_name ~= "jdtls" then
+      -- lspconfig[server_name].setup {
+      -- on_attach = lsp_attach,
+      -- capabilities = capabilities,
+      -- }
+      -- end
+      -- end,
       ["svelte"] = function()
         -- configure svelte server
         lspconfig["svelte"].setup {
