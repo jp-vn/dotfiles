@@ -1,20 +1,20 @@
 # Load global styles, colors and icons
-source "$CONFIG_DIR/globalstyles.sh"
+source "$CONFIG_DIR/icons.sh"
 
 weather=(
   "${menu_defaults[@]}"
   "${notification_defaults[@]}"
   popup.align=right
-  icon.color=$HIGHLIGHT
+  icon.color=0xffcad3f5
   script="$PLUGIN_DIR/weather.sh"
   --subscribe weather wifi_change
-                      mouse.entered
-                      mouse.exited
-                      mouse.exited.global
+                      #mouse.entered
+                      #mouse.exited
+                      #mouse.exited.global
                       mouse.clicked
 )
 sketchybar                                  \
   --add item weather right                  \
        --set weather "${weather[@]}"        \
   --add item weather.details popup.weather  \
-       --set weather.details "${menu_item_defaults[@]}" icon.drawing=on label.padding_left=0
+       --set weather.details "${menu_item_defaults[@]}" icon.drawing=on icon.left_padding=6

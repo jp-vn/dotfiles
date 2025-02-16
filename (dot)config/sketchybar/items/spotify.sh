@@ -9,8 +9,10 @@ spotify_anchor=(
   popup.horizontal=on
   popup.align=center
   popup.height=150
-  icon=􁁒
-  icon.font="$FONT:Regular:25.0"
+  icon="󰈣"  #􁁒   
+  icon.font="SFMono Nerd Font:Regular:20.0"
+  icon.padding_right=6
+  icon.padding_left=6
   label.drawing=off
   drawing=off
   y_offset=0
@@ -146,7 +148,7 @@ spotify_controls=(
 )
 
 sketchybar --add event spotify_change $SPOTIFY_EVENT             \
-           --add item spotify.anchor left                        \
+           --add item spotify.anchor right \
            --set spotify.anchor "${spotify_anchor[@]}"           \
            --subscribe spotify.anchor mouse.entered mouse.exited \
                                       mouse.exited.global        \

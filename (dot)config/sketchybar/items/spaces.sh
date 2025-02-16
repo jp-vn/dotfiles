@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9")
+SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
 
 # Destroy space on right click, focus space on left click.
 # New space by left clicking separator (>)
@@ -16,16 +16,17 @@ do
     icon=${SPACE_ICONS[i]}
     icon.padding_left=10
     icon.padding_right=10
+    padding_bottom=5
     padding_left=5
     padding_right=5
     #label.padding_right=20
     icon.highlight_color=$ORANGE
     #label.font="sketchybar-app-font:Regular:16.0"
-    #label.background.height=26
-    #label.background.drawing=on
-    #label.background.color=$BACKGROUND_2
-    #label.background.corner_radius=8
-    label.drawing=off
+    # label.background.height=26
+    # label.background.drawing=on
+    # label.background.color=$BACKGROUND_2
+    # label.background.corner_radius=8
+    # label.drawing=off
     script="$PLUGIN_DIR/space.sh"
   )
 
@@ -38,6 +39,7 @@ spaces=(
   background.color=$BACKGROUND_1
   background.border_color=$BACKGROUND_2
   background.border_width=2
+  background.height=28
   background.drawing=on
 )
 
