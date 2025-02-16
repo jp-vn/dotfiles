@@ -5,13 +5,15 @@ zen_on() {
              --set apple.logo drawing=off \
              --set '/cpu.*/' drawing=off \
              --set calendar icon.drawing=off \
-             --set yabai drawing=on \
+             --set yabai drawing=off \
              --set separator drawing=on \
-             --set front_app drawing=on \
-             --set volume_icon drawing=on \
+             --set front_app drawing=off \
+             --set volume_icon drawing=off \
+             --set wifi drawing=off \
              --set spotify.anchor drawing=off \
              --set spotify.play updates=off \
              --set weather label.drawing=off \
+             --set weather icon.drawing=off \
              --set brew drawing=off
 }
 
@@ -23,9 +25,11 @@ zen_off() {
              --set separator drawing=on \
              --set front_app drawing=on \
              --set yabai drawing=on \
+             --set wifi drawing=on \
              --set volume_icon drawing=on \
              --set spotify.play updates=on \
              --set weather label.drawing=on \
+             --set weather icon.drawing=on \
              --set brew drawing=on
 }
 

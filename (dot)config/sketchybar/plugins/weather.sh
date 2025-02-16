@@ -115,7 +115,7 @@ render_item() {
   if [ "$TEMP" = "" ]; then
     args=(--set $NAME icon="􀌏" label.drawing=off)
   else
-    args=(--set $NAME icon="$ICON" icon.font="Hack Nerd Font:Bold:16.0" label="${TEMP}°F" label.drawing=on)
+    args=(--set $NAME icon="$ICON" label="${TEMP}°F" icon.font="SFMono Nerd Font:Bold:16.0" label.font="SF Pro:Black:12.0" label.drawing=on)
   fi
 
   sketchybar "${args[@]}" >/dev/null
@@ -145,7 +145,11 @@ update() {
     LAT=$(echo $DATA | jq -r '.location.lat')
     LON=$(echo $DATA | jq -r '.location.lon')
     LOCATION=$(echo $DATA | jq -r '.location.name' && echo ', ' && echo $DATA | jq -r '.location.country')
-    [ "$IS_DAY" = "1" ] && ICON=${WEATHER_ICONS_DAY[$CONDITION]} || ICON=${WEATHER_ICONS_NIGHT[$CONDITION]}
+    if [ "$IS_DAY" = "1" ]; then
+      ICON=${WEATHER_ICONS_DAY[$CONDITION]} 
+    else 
+      ICON=${WEATHER_ICONS_NIGHT[$CONDITION]}
+    fi
     args=()
   fi
 
@@ -157,6 +161,11 @@ update() {
   fi
 }
 
+if [ "$BUTTON" = "right" ] || [ "$MODIFIER" = "shift" ]; then
+  update 
+fi
+
+
 popup() {
   sketchybar --set "$NAME" popup.drawing="$1"
 }
@@ -165,13 +174,13 @@ case "$SENDER" in
 "routine" | "forced" | "wifi_change")
   update
   ;;
-"mouse.entered")
-  popup on
-  ;;
-"mouse.exited" | "mouse.exited.global")
-  popup off
-  ;;
-"mouse.clicked")
-  popup toggle
-  ;;
+#"mouse.entered")
+#  popup on
+#  ;;
+# "mouse.exited" | "mouse.exited.global")
+#  popup off
+#  ;;
+ "mouse.clicked")
+   popup toggle
+   ;;
 esac
