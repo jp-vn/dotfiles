@@ -8,9 +8,6 @@ return {
     build = "make tiktoken", -- Only on MacOS or Linux
     opts = {
       -- Shared config starts here (can be passed to functions at runtime and configured via setup function)
-
-      system_prompt = prompts.COPILOT_INSTRUCTIONS, -- System prompt to use (can be specified manually in prompt via /).
-
       model = "gpt-4o", -- Default model to use, see ':CopilotChatModels' for available models (can be specified manually in prompt via $).
       agent = "copilot", -- Default agent to use, see ':CopilotChatAgents' for available agents (can be specified manually in prompt via @).
       context = nil, -- Default context or array of contexts to use (can be specified manually in prompt via #).
@@ -19,9 +16,6 @@ return {
       temperature = 0.1, -- GPT result temperature
       headless = false, -- Do not write to chat buffer and use history(useful for using callback for custom processing)
       callback = nil, -- Callback to use when ask response is received
-
-      -- default selection
-      selection = function(source) return select.visual(source) or select.buffer(source) end,
 
       -- default window options
       window = {
