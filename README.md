@@ -16,22 +16,40 @@ theme: catppuccin mocha / gruvbox dark / rose pine
 fonts: MesloLGS NF, SFMono NF, SF Pro
 
 
-\>just storing it somewhere in case i accidentally wipe the config
+\> just storing it somewhere in case i accidentally wipe the config
 
+---
 
+## Keybinds
+
+<br>
+
+Menu Bar + Aesthetics
 - opt + shift + m to dock menu bar (square corners)
 - opt + m to float menu bar (rounded corners)
 - opt + o to toggle menu bar
 - opt + shift + o to toggle menu bar + reclaim menu bar space
 - opt + r to reload borders
-  
+
+
+<br>
+
+Desktop Management
 - opt + [1 - 10] to cycle desktops
 - opt + shift + [1-10] to move windows across desktops
 - opt + shift + [n/p] to move windows next/prev desktops
 
+  
+<br>
+
+Window Management
 - opt + shift + [h/j/k/l] to move windows on same desktop
 - opt + [h/j/k/l] to focus windows on same desktop
+
   
+<br> 
+
+Stack Management
 - ctrl + shift + [h/j/k/l] to stack windows on same desktop
 - ctrl + shift + [n/p] to focus window on stack next/prev
 
