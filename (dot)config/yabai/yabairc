@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
 sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 # Unload the macOS WindowManager process
 launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist > /dev/null 2>&1 &
@@ -46,7 +47,7 @@ yabai -m config external_bar               all:49:0     \
                 window_gap                 8
 
 # Exclude problematic apps from being managed:
-yabai -m rule --add app="^(Stocks|Finder|Vimac|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|App Store|Steam|Activity Monitor|Quicktime Player)$" manage=off
+yabai -m rule --add app="^(LuLu|Stocks|Finder|Vimac|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Steam|Alfred|Activity Monitor|Quicktime Player)$" manage=off
 yabai -m rule app="^Logic Pro$" manage=on
 yabai -m rule app="^League of Legends$" manage=off
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
