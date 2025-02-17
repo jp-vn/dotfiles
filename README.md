@@ -45,6 +45,8 @@ Desktop Management
 Window Management
 - opt + shift + [h/j/k/l] to move windows on same desktop
 - opt + [h/j/k/l] to focus windows on same desktop
+- cmd + shift + f to float and unfloat windows
+- ctrl + opt + [h/j/k/l] to resize/redistribute window space
 
   
 <br> 
